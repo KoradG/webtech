@@ -3,7 +3,7 @@
 
 A feladat egy egyszerű webáruház alkalmazást valósít, amely Express.js segítségével épül fel, valamint MongoDB-t adatbázist használ az adatok tárolására.
 Az alkalmazás három fő részből áll: az **items.js** az árukhoz kapcsolódó műveletekért felelős, a **users.js** a felhasználókhoz tartozó műveleteket implementálja, míg a **logger.js** egy middleware, amely naplózza a kéréseket.
-#### Futatás: node create_database.js majd node index.js
+#### Futtatás: node create_database.js majd node index.js
 
 ### **items.js**
 
