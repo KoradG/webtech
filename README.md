@@ -1,64 +1,45 @@
-#Beadandó feladat (Műszaki bolt)
+# Webáruház alkalmazás dokumentációja
+-----------------------------------
 
-Az adott feladat egy webalkalmazás fejlesztését célozza, amely egy egyszerű online áruház funkcionalitását valósítja meg.
-A feladat célja egy teljes körű alkalmazás létrehozása, amely lehetővé teszi a felhasználók számára a termékek böngészését, a kosárba helyezést, a regisztrációt és bejelentkezést, valamint az adminisztrátorok számára a termékek kezelését. 
-Az alkalmazás több különálló részből áll, beleértve a szerveroldali logikát Express.js segítségével, adatbázis műveleteket MongoDB-vel,
-valamint a kliensoldali felület Vue.js keretrendszerrel. 
-A feladat elvégzése során a fejlesztőnek számos funkcionális és biztonsági szempontot is figyelembe kell vennie, hogy biztosítsa az alkalmazás megfelelő működését és biztonságát.
+Ez a dokumentáció egy egyszerű webáruház alkalmazást ír le, amely Express.js segítségével épül fel, valamint MongoDB adatbázist használ az adatok tárolására. Az alkalmazás három fő részből áll: az **items.js** az árukhoz kapcsolódó műveletekért felelős, a **users.js** a felhasználókhoz tartozó műveleteket implementálja, míg a **logger.js** egy middleware, amely naplózza a kéréseket.
 
+### Az **items.js** fájl
 
-# 1. items.js
-## 1.1. Router definíció
-- Express Router
-- MongoClient
-- uuid
+Ez a rész felelős az áruk kezeléséért. Az Express.js Router modulját használja, hogy az árukhoz kapcsolódó végpontokat definiálja. Az adatokat MongoDB adatbázisból szerez be, és RESTful API-n keresztül nyújtja ki.
 
-## 1.2. MongoDB kapcsolat
-- MongoDB connection
+#### Végpontok:
 
-## 1.3. Végpontok definiálása
-- GET /api/items
-- POST /api/items
-- PUT /api/items/:id
-- PUT /api/items/:id/add
-- DELETE /api/items/:id
+*   **GET /**: Az összes áru lekérdezése.
+*   **POST /**: Új áru hozzáadása.
+*   **PUT /:id**: Áru frissítése azonosító alapján.
+*   **PUT /:id/add**: Árukészlet növelése azonosító alapján.
+*   **DELETE /:id**: Áru törlése azonosító alapján.
 
-# 2. users.js
-## 2.1. Router definíció
-- Express Router
-- MongoClient
+### A **users.js** fájl
 
-## 2.2. MongoDB kapcsolat
-- MongoDB connection
+Ebben a részben találhatók meg a felhasználókkal kapcsolatos műveletek. Szintén Express.js Router modult használ, és az adatokat MongoDB-ből szerez be, majd RESTful API-n keresztül nyújtja ki.
 
-## 2.3. Végpontok definiálása
-- GET /api/users
-- POST /api/users
-- PUT /api/users/:id
-- DELETE /api/users/:id
+#### Végpontok:
 
-# 3. logger.js
-## 3.1. Middleware definíció
-- Logger middleware
+*   **GET /**: A bejelentkezett felhasználó adatainak lekérése.
+*   **POST /**: Új felhasználó hozzáadása.
+*   **PUT /:id**: Felhasználó frissítése azonosító alapján.
+*   **DELETE /:id**: Felhasználó törlése azonosító alapján.
 
-# 4. vue.js
-## 4.1. Vue.js konfiguráció
-- Vue Resource és Vue Router inicializálása
+### A **logger.js** fájl
 
-## 4.2. Vue alkalmazás
-- Vue alkalmazás létrehozása
+Ez a middleware funkció felelős a kérések naplózásáért. Egyszerűen csak naplózza a bejövő kérések részleteit, mint például az URL-t és az időbélyeget.
 
-# 5. index.js
-## 5.1. Express alkalmazás
-- Express alkalmazás inicializálása
-- MongoDB kapcsolat inicializálása
+### A **vue.js** fájl
 
-## 5.2. Végpontok definiálása
-- GET /
-- POST /login
-- POST /register
-- GET *
+A Vue.js keretrendszer segítségével készült, amely kliensoldali alkalmazással interaktív módon kommunikál a szerverrel. A felhasználói felület segítségével böngészhet az áruk között, kosárba helyezheti azokat és leadhatja a rendelést.
 
-# 6. database_create.js
-## 6.1. Adatbázis inicializálása
-- MongoDB adatbázis inicializálása
+### Az **index.js** fájl
+
+Ez a fő alkalmazásfájl, amely beállítja az Express.js szervert, kezeli a végpontokat, a middleware-eket és a statikus fájlok szolgáltatását. Továbbá, kezeli a felhasználói munkameneteket is, és az adatbáziskapcsolatot inicializálja.
+
+### A **database\_create.js** fájl
+
+Ez a fájl egy inicializáló szkript, amely létrehozza a MongoDB adatbázist, az azon belüli táblákat (kollekciókat), valamint feltölti azokat kezdeti adatokkal. A fájl futtatásával az alkalmazás kezdeti adatbázis konfigurációja automatikusan létrejön.
+
+Ez az alkalmazás segítséget nyújt egy egyszerű webáruház megvalósításához, és alkalmas lehet továbbfejlesztésre vagy testelésre.
