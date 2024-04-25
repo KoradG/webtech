@@ -1,0 +1,22 @@
+{
+  "name": "zf440n_webtech2",
+  "version": "1.0.0",
+  "description": "Beadando feladat webtech2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "beadando"
+  ],
+  "author": "Kórád György ZF440N",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "moment": "^2.24.0",
+    "mongodb": "^3.7.4",
+    "uuid": "^7.0.3"
+  }
+}
